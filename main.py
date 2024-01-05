@@ -1,4 +1,7 @@
-import os
+#Get-Content d:\qq_speed_assist.log -Tail 10 -Wait
+#Get-Content c:\qq_speed_award.txt -Tail 10 -Wait
+#cd D:\QQ_Speed_Assist\qq_speed_assist\
+#python main.py
 
 from utils import *
 

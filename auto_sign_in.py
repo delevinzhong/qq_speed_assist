@@ -23,6 +23,10 @@ def sign_in():
     print("点击确认")
     find_and_click(image_path=img_sign_in_confirm, click_mode=1)
     sleep(1)
+    # C:\Users\Delevin\Documents\leidian9\Pictures\Screenshots\
+    # activate_window('小号')
+    # sleep(1)
+    pg.hotkey('ctrl', '0')
     # 6.返回
     print("返回")
     find_and_click(image_path=img_sign_in_back, click_mode=1)
@@ -85,6 +89,8 @@ def treasure_hunt(times):
         sleep(15)
         find_and_click(image_path=img_treasure_confirm, click_mode=1)
         sleep(1)
+    pg.hotkey('ctrl', '0')
+    sleep(1)
     find_and_click(image_path=img_sign_in_back, click_mode=1)
 
 
@@ -106,6 +112,7 @@ if __name__ == '__main__':
     img_sign_in_avatar_1 = './resources/sign_in_avatar_1.png'
     img_sign_in_avatar_2 = './resources/sign_in_avatar_2.png'
     img_sign_in_avatar_3 = './resources/sign_in_avatar_3.png'
+    img_sign_in_avatar_4 = './resources/sign_in_avatar_4.png'
     img_sign_in_login = './resources/sign_in_login.png'
     img_sign_in_qq_login = './resources/sign_in_qq_login.png'
     img_sign_in_qq_auth_login = './resources/sign_in_qq_auth_login.png'
@@ -161,6 +168,14 @@ if __name__ == '__main__':
     print("7.账号3签到")
     sign_in()
     sleep(1)
-    # 8.切换回账号1
+    # 8.切换到账号4
+    print("8.切换到账号4")
+    switch_account(img_sign_in_avatar_4)
+    sleep(1)
+    # 9.账号4签到
+    print("9.账号4签到")
+    sign_in()
+    sleep(1)
+    # 10.切换回账号1
     print("8.切换回账号1")
     switch_account(img_sign_in_avatar_1)

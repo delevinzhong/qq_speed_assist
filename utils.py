@@ -70,6 +70,15 @@ def login(acc_pwd_dict):
         logging.info("等待30秒进入游戏界面")
         sleep(30)
         pg.click(x=1273, y=333, duration=1)
+        img_get_daily_award = './resources/get_daily_award.png'
+        img_i_know = './resources/i_know.png'
+        img_close = './resources/close.png'
+        find_and_click(image_path=img_get_daily_award, click_mode=1)
+        sleep(2)
+        find_and_click(image_path=img_i_know, click_mode=1)
+        sleep(2)
+        find_and_click(image_path=img_close, click_mode=1)
+        sleep(1)
         logging.info("关闭弹窗")
         pg.press(keys='ESC', presses=5, interval=0.5)
 
@@ -110,7 +119,7 @@ def find_and_click(image_path, click_mode, clicks=1, confidence=0.8):
             # 模拟点击目标图片的中心位置
             # print(x, y)
             if click_mode == 1:
-                pg.click(x, y, clicks=clicks, interval=0.01)
+                pdi.click(x, y, clicks=clicks, interval=0.01)
             elif click_mode == 2:
                 pg.doubleClick(x, y)
             return True
