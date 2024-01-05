@@ -23,6 +23,7 @@ from PIL import ImageGrab, Image
 
 logging.basicConfig(filename='d://qq_speed_assist.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+# pip install opencv-python -i https://pypi.mirrors.ustc.edu.cn/simple
 
 def today_tmr():
     today = datetime.date.today()
@@ -109,14 +110,14 @@ def find_and_click(image_path, click_mode, clicks=1, confidence=0.8):
             # 模拟点击目标图片的中心位置
             # print(x, y)
             if click_mode == 1:
-                pg.click(x, y, clicks=clicks)
+                pg.click(x, y, clicks=clicks, interval=0.01)
             elif click_mode == 2:
                 pg.doubleClick(x, y)
             return True
         else:
             return False
     except pg.ImageNotFoundException:
-        logging.info("未找到图片位置")
+        logging.info("未找到图片位置 - {}".format(image_path))
 
 
 def go_to_qq_speed_title():
@@ -197,29 +198,30 @@ def create_dance_room():
     # find_and_click(image_path=img_start, click_mode=1)
 
 
-def invite_account_2(account, title):
+def invite_account(account, title, mode):
     img_friends = './resources/friends.png'
     img_find_friends = './resources/find_friends.png'
     img_confirm = './resources/confirm.png'
     img_invite = './resources/invite_to_join.png'
 
-    find_and_click(image_path=img_friends, click_mode=1) # 点击好友图标
-    sleep(1)
+    if mode == 2:
+        find_and_click(image_path=img_friends, click_mode=1) # 点击好友图标
+        sleep(2)
     find_and_click(image_path=img_find_friends, click_mode=1) # 点击查找车手
-    sleep(1)
+    sleep(2)
     pg.typewrite(account) # 输入要查找的QQ号
-    sleep(1)
+    sleep(2)
     find_and_click(image_path=img_confirm, click_mode=1) # 确定
-    sleep(1)
+    sleep(3)
     # find_and_click(image_path=img_invite, click_mode=1) # 点击邀请
     pdi.click(x=909, y=951)
-    sleep(1)
+    sleep(2)
     pg.press('ESC') # 返回房间界面
-    sleep(1)
+    sleep(2)
     activate_window(title)   # 切换至账号2
-    sleep(1)
+    sleep(2)
     pg.click(x=1826, y=1066) # 接受邀请
-    sleep(1)
+    sleep(2)
     find_and_click(image_path=img_confirm, click_mode=1) # 确定
     sleep(2)
     pg.press('F5') # 准备

@@ -31,6 +31,6 @@
 #             print(f"stderr:\n{stderr}")
 #             print("------")
 
-
-if __name__ == "__main__":
-    run_double_mode()
+#
+# if __name__ == "__main__":
+#     run_double_mode()
